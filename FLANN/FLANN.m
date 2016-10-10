@@ -4,7 +4,7 @@ clear all
 close all
 clf('reset')
 clf
-load 'theta.mat'
+load 'theta.mat' %lLoad Input cartesian coordinate and desired output thetas
 X = Z (:,1); %input data
 Y = Z (:,2); %input data
 D = THETA; %desired output data
@@ -12,7 +12,7 @@ X= X'; %Re-arrange data for training
 Y= Y'; %Re-arrange data for training
 maxepoch = 1000;
 alpha =0.75;
-MSEmin = 0.01;
+MSEmin = 0.01; % Error threshold
 [W,MSE,epoch,PST,PS] = Train_FLANN(X,Y,D,alpha,maxepoch,MSEmin);%call to training function
 figure(1)
 plot( epoch,MSE(:,1),'r-');
@@ -27,7 +27,7 @@ X = Z(:,1);
 Y = Z(:,2);
 X= X';
 Y= Y';
-O = Run_FLANN(X,Y,W,PST,PS);
+O = Run_FLANN(X,Y,W,PST,PS); % Testing the trained network
 o1 = O(:,1);
 o2 = O(:,2);
 sample = 1:size(X,2);
@@ -55,4 +55,4 @@ fprintf ('%3.4f %3.4f %3.4f %3.4f %3.4f %3.4f %3.4f %3.4f\n',X(i), Y(i), D(i,:),
 end
 
 fprintf('\nTraining Set Accuracy: %f\n', mean(double(O == D)) * 100);
-toc
+toc 
