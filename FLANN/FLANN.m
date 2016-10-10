@@ -4,7 +4,7 @@ clear all
 close all
 clf('reset')
 clf
-load 'theta.mat' %lLoad Input cartesian coordinate and desired output thetas
+load 'theta.mat' %Load Input cartesian coordinate and desired output thetas
 X = Z (:,1); %input data
 Y = Z (:,2); %input data
 D = THETA; %desired output data
